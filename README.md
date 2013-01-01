@@ -7,6 +7,7 @@ Twitter module
 ==============
 
 On line #15 you will see:
+
     # Twitter credentials
     t = Twitter(
                 auth=OAuth(OAUTH_TOKEN, OAUTH_SECRET,
