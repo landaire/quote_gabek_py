@@ -21,7 +21,7 @@ t = Twitter(
 # Get my last tweet
 last_tweet = t.statuses.user_timeline(screen_name="QuotesGabek", count=1)[0]
 # If the last tweet was tweeted within an hour...
-if dateutil.parser.parse(last_tweet["created_at"]) > pytz.UTC.localize(datetime.utcnow()):
+if dateutil.parser.parse(last_tweet["created_at"]) > pytz.UTC.localize(datetime.utcnow() - timedelta(hours=1)):
   sleep(3600) # Sleep for an hour
 
 last_tweet_id = None
@@ -43,7 +43,7 @@ while True:
   random.shuffle(trailing_words)
   for tweet in tweets:
     if tweet["id"] > last_tweet_id and len(tweet["text"]) <= 115:
-      tweet_text = "As gabe_k once said, \"%s.\"" % re.sub("\.$", "", tweet["text"])
+      tweet_text = "As @gabe_k once said, \"%s.\"" % re.sub("\.$", "", tweet["text"])
       max_string = 140 - len(tweet_text)
       for word in trailing_words:
         if len(word) <= max_string:
