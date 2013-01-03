@@ -2,6 +2,7 @@ import os, re, random, dateutil.parser, pytz
 from twitter import *
 from datetime import datetime, timedelta
 from time import sleep
+from random import randint
 
 # External dependencies: pytz, twitter
 # twitter: https://github.com/sixohsix/twitter
@@ -22,7 +23,7 @@ t = Twitter(
 last_tweet = t.statuses.user_timeline(screen_name="QuotesGabek", count=1)[0]
 # If the last tweet was tweeted within an hour...
 if dateutil.parser.parse(last_tweet["created_at"]) > pytz.UTC.localize(datetime.utcnow() - timedelta(hours=1)):
-  sleep(3600) # Sleep for an hour
+  sleep(randint(1,12) * 3600) # Sleep for a random amount of time
 
 last_tweet_id = None
 # Open the last tweet
@@ -31,6 +32,7 @@ with open("last_tweet_id.txt", "a+") as f:
     f.seek(0)
     last_tweet_id = f.readline()
     if last_tweet_id != '':
+      ''.joi
       last_tweet_id = int(last_tweet_id)
   if last_tweet_id == None:
     last_tweet_id = 285524200033243136
@@ -48,12 +50,13 @@ while True:
       for word in trailing_words:
         if len(word) <= max_string:
           tweet_text += " %s" % word
-          if len(word) + 1 <= max_string:
+          if len(word) + 1 <= max_string and not re.match("(?!\.)+$", word):
             tweet_text += "."
           break
       with open("last_tweet_id.txt", "w") as f:
         f.write(str(tweet["id"]))
+      last_tweet_id = tweet["id"]
       t.statuses.update(status=tweet_text)
       print "%s Tweeted: %s" % (str(datetime.now()), tweet_text)
       break
-  sleep(3 * 60 * 60)
+  sleep(randint(1,12) * 3600)
