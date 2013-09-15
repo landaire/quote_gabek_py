@@ -8,11 +8,11 @@ from random import randint
 # twitter: https://github.com/sixohsix/twitter
 # pytz: http://sourceforge.net/projects/pytz/
 
-trailing_words = ["So trill", "Trill", "True", "Real talk", "Why aren't I gay?", "If only he loved bots", "Oh",
-                  "#realtalk", "#lovehim", "#trill", "#trillistniggaalive", "#thingshomosexualssay", "Sexy", "#random",
+trailing_words = ["So trill", "Trill", "True", "Real talk", "If only he loved bots", "Oh",
+                  "#realtalk", "#lovehim", "#trill", "Sexy", "#random",
                   "#myboo", "#sosexy", "SENDING OUT AN SOS", "So that's what sank the Titanic?", "Whores these days...",
-                  "#foreverandever", "Yeah, fuck @_skitzo", "I wonder if he's a local single in my area...", "He's literally the illuminati",
-                  "ORAL SEX ON COUCHES", "#numbahjuangabestah a-wuh a-wuh wuh", "Gabe's up in his garage. Smokin' that weed. SMOKE SOME WEED."]
+                  "#foreverandever", "I wonder if he's a local single in my area...", "He's literally the illuminati",
+                  "#numbahjuangabestah a-wuh a-wuh wuh",]
 
 # Twitter credentials
 t = Twitter(
